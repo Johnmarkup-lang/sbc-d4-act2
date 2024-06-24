@@ -1,17 +1,15 @@
 from random import randint #import random integer function from the random library module
-#humpyang game
-options = {0: "kulob", 1: "hayang"} #this line is the dictionary which contain 0 and 1 as key to choose an option if it's kulob or hayang
+#swertres game
+taya1 = int(input("Enter first number (0-9):")); taya2 = int(input("Enter second number (0-9):")); taya3 = int(input("Enter third number (0-9):")) #player will input three numbers from 0-9 to play
+result1 = randint(0,9); result2 = randint(0,9); result3 = randint(0,9) #generate three integer/number using randint function
 
-p1 = input("pick 0 kung kulob 1 kung hayang (kulob, hayang): "); p1 = options[int(p1)] #player will input the key to choose
-c1 = options[randint(0, 1)] ; c2 = options[randint(0, 1)] #the randint function will choose randomly a number from 0-1 to pick from the dictionary
+print("Taya nimo:", taya1, taya2, taya3); print("Result:", result1, result2, result3) #the player input will be printed and also the generated result
 
-print(f"P1: {p1}"); print(f"c1: {c1}"); print(f"c2: {c2}") #the player inputted choice will be printed and also the random choice from c1 and c2
-
-if p1 != c1 and p1 != c2: #compares if p1 choice is not the same with c1 and c2
-    print("p1 ang daog!") #p1 wins if c1 and c2 chose the same
-elif c1 != p1 and c1 != c2: #compares if c1 choice is not the same with p1 and c2
-    print("c1 ang daog!") #c1 wins if p1 and c2 chose the same
-elif c2 != p1 and c2 != c1: #compares if c2 choice is not the same with p1 and c1
-    print("c2 ang daog!") #c2 wins if p1 and c1 chose the same
+if (taya1 == result1 and taya2 == result2 and taya3 == result3): #checking if the taya(player input number) matches with the generated result
+    print("You Win!") #print if it matches
 else:
-    print("parehas tanan! utro!") #if p1, c1 and c2 are the same it'll be resulting as a draw
+    bet = [taya1, taya2, taya3]; result = [result1, result2, result3] #create bet/taya list and result list
+    if sorted(bet) == sorted(result): #check if taya and result matches in any order using sorted function
+        print("You Partially Win!") #the player partially win if the number matches in any order (e.g: bet: 1 2 3 result: 3 2 1)
+    else:
+        print("You Lose!") #else if players three numbers didn't match at all
